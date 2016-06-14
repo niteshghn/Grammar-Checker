@@ -1,10 +1,17 @@
-import win32com.client, os
+import win32com.client, os, re
 
 wdDoNotSaveChanges = 0
-path = os.path.abspath('snippet3.txt')
+path = os.path.abspath('snippet7.txt')
 
-snippet = 'Myself John. I studies mathematics. This is an correct sentence. '
-snippet += 'You is selfish.'
+filename = "C:\\Users\\Ayush\\AppData\\Roaming\\nltk_data\\corpora\\genesis\\speech.txt"
+with open(filename) as f:
+    text = f.read()
+    sentences = re.split(r' *[\.\?!][\'"\)\]]* *', text)
+    mystring = text.replace('\n','')
+#print(mystring)
+
+snippet =text
+#snippet += 'You is selfish.'
 file = open(path, 'w')
 file.write(snippet)
 file.close()
